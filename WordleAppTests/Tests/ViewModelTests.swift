@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Wordle
+@testable import WordleApp
 
 final class ViewModelTests: XCTestCase {
     var sut: ViewModel!

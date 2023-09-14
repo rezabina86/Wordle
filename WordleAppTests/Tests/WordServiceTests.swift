@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Wordle
+@testable import WordleApp
 
 final class WordServiceTests: XCTestCase {
     var sut: WordService!

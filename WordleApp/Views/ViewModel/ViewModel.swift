@@ -52,6 +52,26 @@ final class ViewModel: ObservableObject {
         .empty()
     ]
     
+    // MARK: - Publics
+    public func submit() {
+        guard case .ongoing = status else { return }
+        
+        guard currentWord.count == Constant.numberOfCharacters else {
+            error = .notEnoughChar
+            return
+        }
+        
+        let word = currentWord.compactMap { String($0.char) }.joined()
+
+        guard wordStorageUseCase.isValid(word) else {
+            error = .notValidWord
+            return
+        }
+
+        let result = gameService.check(input: word, answer: answer)
+        self.handleResult(result)
+    }
+    
     // MARK: - Privates
     private var subscriptions: Set<AnyCancellable> = []
     private var answer: String = ""
@@ -63,15 +83,6 @@ final class ViewModel: ObservableObject {
     private let viewStateConverter: GameViewStateConverterType
     
     private func handleInput(for key: KeyViewState) {
-        switch key.type {
-        case .character, .delete:
-            updateWord(with: key)
-        case .enter:
-            submit()
-        }
-    }
-    
-    private func updateWord(with key: KeyViewState) {
         guard status == .ongoing else { return }
         
         switch key.type {
@@ -81,7 +92,9 @@ final class ViewModel: ObservableObject {
         case .delete:
             guard !currentWord.isEmpty else { return }
             currentWord.removeLast()
-        case .enter: break
+        case .enter:
+            submit()
+            return
         }
         
         self.rows[currentRow] = viewStateConverter.create(from: currentWord)
@@ -110,26 +123,6 @@ final class ViewModel: ObservableObject {
     
     private func updateKeyboard(with result: [GameResultEntity]) {
         self.keyboardState = self.keyboardState.create(from: result)
-    }
-    
-    // MARK: - Publics
-    public func submit() {
-        guard case .ongoing = status else { return }
-        
-        guard currentWord.count == Constant.numberOfCharacters else {
-            error = .notEnoughChar
-            return
-        }
-        
-        let word = currentWord.compactMap { String($0.char) }.joined()
-
-        guard wordStorageUseCase.isValid(word) else {
-            error = .notValidWord
-            return
-        }
-
-        let result = gameService.check(input: word, answer: answer)
-        self.handleResult(result)
     }
     
 }

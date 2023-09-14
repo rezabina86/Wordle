@@ -1,6 +1,6 @@
 import Foundation
 import XCTest
-@testable import Wordle
+@testable import WordleApp
 
 final class GameViewStateConverterTests: XCTestCase {
     var sut: GameViewStateConverter!

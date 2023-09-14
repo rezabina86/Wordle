@@ -1,5 +1,5 @@
 import Foundation
-@testable import Wordle
+@testable import WordleApp
 
 final class WordServiceMock: WordServiceType {
     
