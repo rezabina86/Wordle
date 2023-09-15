@@ -89,7 +89,7 @@ final class ViewModelTests: XCTestCase {
         
         XCTAssertTrue(mockViewStateConverter.calls == viewStateExpectation)
         
-        XCTAssertTrue(sut.status == .won("Congradulations!"))
+        XCTAssertTrue(sut.status == .won("Genius"))
     }
     
     func testSubmitWithWrongAnswer() {
@@ -245,6 +245,6 @@ final class ViewModelTests: XCTestCase {
             sut.submit()
         }
         
-        XCTAssertTrue(sut.status == .finished("The answer is ABCDE"))
+        XCTAssertTrue(sut.status == .finished("ABCDE"))
     }
 }

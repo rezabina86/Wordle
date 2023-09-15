@@ -104,7 +104,7 @@ final class ViewModel: ObservableObject {
         self.rows[currentRow] = viewStateConverter.create(from: result)
         
         if result.didWin {
-            status = .won(self.buildWonBannerMessage())
+            status = .won(currentRow.bannerMessageWhenWin)
             return
         }
         
@@ -120,18 +120,6 @@ final class ViewModel: ObservableObject {
     
     private func updateKeyboard(with result: [GameResultEntity]) {
         self.keyboardState = self.keyboardState.create(from: result)
-    }
-    
-    private func buildWonBannerMessage() -> String {
-        switch currentRow {
-        case 0: return "Genius"
-        case 1: return "Magnificent"
-        case 2: return "Impressive"
-        case 3: return "Splendid"
-        case 4: return "Great"
-        case 5: return "Phew..."
-        default: fatalError("Should not happen")
-        }
     }
     
 }
@@ -180,4 +168,16 @@ extension Word.Char.State {
     }
 }
 
-
+private extension Int {
+    var bannerMessageWhenWin: String {
+        switch self {
+        case 0: return "Genius"
+        case 1: return "Magnificent"
+        case 2: return "Impressive"
+        case 3: return "Splendid"
+        case 4: return "Great"
+        case 5: return "Phew..."
+        default: fatalError("Should not happen")
+        }
+    }
+}
