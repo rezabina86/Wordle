@@ -102,6 +102,7 @@ final class ViewModel: ObservableObject {
     
     private func handleResult(_ result: [GameResultEntity]) {
         self.rows[currentRow] = viewStateConverter.create(from: result)
+        updateKeyboard(with: result)
         
         if result.didWin {
             status = .won(currentRow.bannerMessageWhenWin)
@@ -110,8 +111,6 @@ final class ViewModel: ObservableObject {
         
         currentRow += 1
         currentWord.removeAll()
-        
-        updateKeyboard(with: result)
         
         if currentRow == rows.count {
             status = .finished(answer)
