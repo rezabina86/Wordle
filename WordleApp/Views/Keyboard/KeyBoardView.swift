@@ -44,7 +44,7 @@ struct KeyBoardView: View {
             }
             .font(.title3)
             .fontWeight(.bold)
-            .foregroundColor(.white)
+            .foregroundColor(state.state.foregroundColor)
             .frame(minWidth:29)
             .frame(height: 50)
             .background(state.state.backgroundColor)
@@ -58,9 +58,9 @@ struct KeyBoardView: View {
             .scaledToFill()
             .minimumScaleFactor(0.01)
             .padding(8)
-            .foregroundColor(.white)
+            .foregroundColor(Color.textColor)
             .frame(height: 50)
-            .background(Color.lightGray)
+            .background(Color.backgroundKeyNoneColor)
             .cornerRadius(4)
         case .delete:
             Button {
@@ -69,9 +69,9 @@ struct KeyBoardView: View {
                 Image(systemName: "delete.left")
                     .fontWeight(.bold)
                     .padding(8)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.textColor)
                     .frame(height: 50)
-                    .background(Color.lightGray)
+                    .background(Color.backgroundKeyNoneColor)
                     .cornerRadius(4)
             }
         }
@@ -126,13 +126,26 @@ extension KeyViewState.State {
     var backgroundColor: Color {
         switch self {
         case .wrong:
-            return .darkGray
+            return .backgroundWrongColor
         case .correct:
             return .correct
         case .misplaced:
             return .misplaced
         case .none:
-            return .lightGray
+            return .backgroundKeyNoneColor
+        }
+    }
+    
+    var foregroundColor: Color {
+        switch self {
+        case .wrong:
+            return .white
+        case .correct:
+            return .white
+        case .misplaced:
+            return .white
+        case .none:
+            return .textColor
         }
     }
 }
@@ -179,8 +192,4 @@ extension KeyViewState {
     static let delete: KeyViewState = .init(state: .none, type: .delete, char: " ")
     
     static let none: KeyViewState = .init(state: .none, type: .delete, char: " ")
-}
-
-extension KeyBoardViewState {
-    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5F061C42AB485FB00D1B6B9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F061C32AB485FB00D1B6B9 /* Colors.xcassets */; };
 		B66C2B4C2AB375B90047B80B /* WordStorageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C2B2E2AB375B90047B80B /* WordStorageUseCase.swift */; };
 		B66C2B4D2AB375B90047B80B /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C2B2F2AB375B90047B80B /* WordService.swift */; };
 		B66C2B4E2AB375B90047B80B /* WordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66C2B312AB375B90047B80B /* WordEntity.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5F061C32AB485FB00D1B6B9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B66C2B002AB375900047B80B /* WordleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C2B102AB375910047B80B /* WordleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66C2B2E2AB375B90047B80B /* WordStorageUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordStorageUseCase.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				B66C2B362AB375B90047B80B /* common.json */,
 				B66C2B372AB375B90047B80B /* Assets.xcassets */,
+				A5F061C32AB485FB00D1B6B9 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66C2B532AB375B90047B80B /* Assets.xcassets in Resources */,
+				A5F061C42AB485FB00D1B6B9 /* Colors.xcassets in Resources */,
 				B66C2B542AB375B90047B80B /* Preview Assets.xcassets in Resources */,
 				B66C2B522AB375B90047B80B /* common.json in Resources */,
 			);

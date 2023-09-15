@@ -33,6 +33,10 @@ struct Word: Equatable, Identifiable {
             .init(character: Character(" "))
         }
         
+        var isEmpty: Bool {
+            self == .empty()
+        }
+        
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.character == rhs.character && lhs.state == rhs.state
         }

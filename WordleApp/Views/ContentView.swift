@@ -37,7 +37,7 @@ struct ContentView: View {
             }
         }
         .padding(16)
-        .background(Color.noir)
+        .background(Color.backgroundColor)
     }
     
     @ViewBuilder
@@ -84,9 +84,11 @@ struct ContentView: View {
     private func bannerView(with message: String) -> some View {
         Text(message)
             .font(.callout)
-            .padding()
-            .foregroundColor(.noir)
-            .background(Color.white)
+            .fontWeight(.bold)
+            .padding([.leading, .trailing], 24)
+            .padding([.top, .bottom], 12)
+            .foregroundColor(.white)
+            .background(Color.bannerBackgroundColor)
             .cornerRadius(8)
     }
     
@@ -112,15 +114,7 @@ struct CellView: View {
             .frame(width: width, height: height)
             .background(background)
             .cellBorderView(for: character)
-            .foregroundColor(.white)
-    }
-    
-    @ViewBuilder
-    private func borderView() -> some View {
-        switch character.state {
-        case .correct, .wrong, .displaced: self
-        case .draft: self.border(Color.darkGray, width: 3)
-        }
+            .cellForegroundColor(for: character)
     }
     
     @ViewBuilder
@@ -128,8 +122,8 @@ struct CellView: View {
         switch character.state {
         case .correct: Color.correct
         case .displaced: Color.misplaced
-        case .draft: Color.noir
-        case .wrong: Color.darkGray
+        case .draft: Color.backgroundColor
+        case .wrong: Color.backgroundWrongColor
         }
     }
 }
@@ -139,7 +133,20 @@ private extension View {
     func cellBorderView(for character: Word.Char) -> some View {
         switch character.state {
         case .correct, .wrong, .displaced: self
-        case .draft: self.border(Color.darkGray, width: 3)
+        case .draft:
+            if character.isEmpty {
+                self.border(Color.borderInactiveColor, width: 2)
+            } else {
+                self.border(Color.borderActiveColor, width: 2)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func cellForegroundColor(for character: Word.Char) -> some View {
+        switch character.state {
+        case .correct, .displaced, .wrong: self.foregroundColor(.white)
+        case .draft: self.foregroundColor(Color.textColor)
         }
     }
 }
