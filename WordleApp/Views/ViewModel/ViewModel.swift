@@ -103,26 +103,35 @@ final class ViewModel: ObservableObject {
     private func handleResult(_ result: [GameResultEntity]) {
         self.rows[currentRow] = viewStateConverter.create(from: result)
         
+        if result.didWin {
+            status = .won(self.buildWonBannerMessage())
+            return
+        }
+        
         currentRow += 1
         currentWord.removeAll()
         
         updateKeyboard(with: result)
-        checkIfGameEnded(with: result)
-    }
-
-    private func checkIfGameEnded(with result: [GameResultEntity]) {
-        if result.didWin {
-            status = .won("Congradulations!")
-            return
-        }
-
+        
         if currentRow == rows.count {
-            status = .finished("The answer is \(answer)")
+            status = .finished(answer)
         }
     }
     
     private func updateKeyboard(with result: [GameResultEntity]) {
         self.keyboardState = self.keyboardState.create(from: result)
+    }
+    
+    private func buildWonBannerMessage() -> String {
+        switch currentRow {
+        case 0: return "Genius"
+        case 1: return "Magnificent"
+        case 2: return "Impressive"
+        case 3: return "Splendid"
+        case 4: return "Great"
+        case 5: return "Phew..."
+        default: fatalError("Should not happen")
+        }
     }
     
 }
