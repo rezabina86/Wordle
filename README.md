@@ -8,5 +8,6 @@ You play by guessing different five-letter words to see how close they are to th
 This is a sample Wordle app that I worked on over a weekend. Every time you run the app, it selects a random word from its word list, and you have six rounds to guess the word, just like the original game.
 
 <div align="center">
-  <img width=400 alt="Screenshot of the app" src="https://github.com/rezabina86/Wordle/assets/22550304/e638b155-556f-4187-912b-d2bb09b01871">
+  <img width=400 alt="Screenshot of the app" src="https://github.com/rezabina86/Wordle/assets/22550304/e6e386d3-2fa4-4f90-8e72-6fe71ecc9ac5">
+  <img width=400 alt="Screenshot of the app" src="https://github.com/rezabina86/Wordle/assets/22550304/15dd9891-f294-4fda-b115-413252b394b9">
 </div>
