@@ -41,17 +41,20 @@ struct KeyBoardView: View {
         case .character:
             Button(state.char.uppercased()) {
                 onTap = state
-            }.font(.title3)
-                .foregroundColor(.white)
-                .frame(minWidth:29)
-                .frame(height: 50)
-                .background(state.state.backgroundColor)
-                .cornerRadius(4)
+            }
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(.white)
+            .frame(minWidth:29)
+            .frame(height: 50)
+            .background(state.state.backgroundColor)
+            .cornerRadius(4)
         case .enter:
             Button("ENTER") {
                 onTap = state
             }
             .font(.caption2)
+            .fontWeight(.bold)
             .scaledToFill()
             .minimumScaleFactor(0.01)
             .padding(8)
@@ -64,6 +67,7 @@ struct KeyBoardView: View {
                 onTap = state
             } label: {
                 Image(systemName: "delete.left")
+                    .fontWeight(.bold)
                     .padding(8)
                     .foregroundColor(.white)
                     .frame(height: 50)
@@ -143,7 +147,7 @@ struct KeyBoardView_Previews: PreviewProvider {
 }
 
 extension KeyViewState {
-        
+    
     static let Q: KeyViewState = .init(state: .none, type: .character, char: "Q")
     static let W: KeyViewState = .init(state: .none, type: .character, char: "W")
     static let E: KeyViewState = .init(state: .none, type: .character, char: "E")
